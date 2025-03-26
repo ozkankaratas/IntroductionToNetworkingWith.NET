@@ -99,8 +99,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-/TcpEchoClient/bin/Debug/net8.0/
-/TcpEchoServer/obj/Debug/net8.0/
 
 /TcpEchoClient/bin/Debug/net8.0/TcpEchoClient.dll
 /TcpEchoClient/bin/Debug/net8.0/TcpEchoClient.exe
