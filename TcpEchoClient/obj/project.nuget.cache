@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2JMtZsNeVlg=",
+  "dgSpecHash": "KA60SObGa1Y=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ozkan\\source\\repos\\TcpEchoClient\\TcpEchoClient.csproj",
+  "projectFilePath": "C:\\Users\\Ozkan\\source\\repos\\C#Networking\\TcpEchoClient\\TcpEchoClient.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

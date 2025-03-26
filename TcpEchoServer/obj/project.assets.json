@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ozkan\\source\\repos\\TcpEchoServer\\TcpEchoServer.csproj",
+      "projectUniqueName": "C:\\Users\\Ozkan\\source\\repos\\C#Networking\\TcpEchoServer\\TcpEchoServer.csproj",
       "projectName": "TcpEchoServer",
-      "projectPath": "C:\\Users\\Ozkan\\source\\repos\\TcpEchoServer\\TcpEchoServer.csproj",
+      "projectPath": "C:\\Users\\Ozkan\\source\\repos\\C#Networking\\TcpEchoServer\\TcpEchoServer.csproj",
       "packagesPath": "C:\\Users\\Ozkan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ozkan\\source\\repos\\TcpEchoServer\\obj\\",
+      "outputPath": "C:\\Users\\Ozkan\\source\\repos\\C#Networking\\TcpEchoServer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
