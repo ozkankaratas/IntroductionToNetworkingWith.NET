@@ -112,7 +112,6 @@ Temporary Items
 /TcpEchoClient/obj/Debug/net8.0/TcpEchoClient.dll
 /TcpEchoClient/obj/Debug/net8.0/TcpEchoClient.genruntimeconfig.cache
 /TcpEchoClient/obj/Debug/net8.0/TcpEchoClient.pdb
-/TcpEchoClient/TcpEchoClient.cs
 /TcpEchoServer/bin/Debug/net8.0/TcpEchoServer.dll
 /TcpEchoServer/bin/Debug/net8.0/TcpEchoServer.exe
 /TcpEchoServer/bin/Debug/net8.0/TcpEchoServer.pdb
@@ -125,4 +124,3 @@ Temporary Items
 /TcpEchoServer/obj/Debug/net8.0/TcpEchoServer.dll
 /TcpEchoServer/obj/Debug/net8.0/TcpEchoServer.genruntimeconfig.cache
 /TcpEchoServer/obj/Debug/net8.0/TcpEchoServer.pdb
-/TcpEchoServer/TcpEchoServer.cs
