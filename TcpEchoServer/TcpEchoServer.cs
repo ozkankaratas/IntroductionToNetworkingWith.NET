@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 class Program
 {
+    // Konsol erişimini senkronize etmek için kilit nesnesi
+    static readonly object consoleLock = new object();
+
     static async Task Main(string[] args)
     {
         IPAddress ipAddress = IPAddress.Any;
@@ -56,8 +59,10 @@ class Program
     // Her istemci için ayrı bir görev (Task) olarak çalıştırılır.
     static async Task HandleClientAsync(TcpClient client)
     {
+        var clientEndPoint = (IPEndPoint)client.Client.RemoteEndPoint;
+        string clientIdentifier = $"{clientEndPoint.Address}:{clientEndPoint.Port}";
         // Hangi thread'in bu istemciyle ilgilendiğini görelim
-        Console.WriteLine($"---> İstemci ({((IPEndPoint)client.Client.RemoteEndPoint).Address}:{((IPEndPoint)client.Client.RemoteEndPoint).Port}) için İş Parçacığı ID: {Thread.CurrentThread.ManagedThreadId}");
+        Console.WriteLine($"---> [{clientIdentifier}] için İş Parçacığı ID: {Thread.CurrentThread.ManagedThreadId}");
 
         using (client)
         using (NetworkStream stream = client.GetStream())
@@ -71,12 +76,18 @@ class Program
                 while ((bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length)) != 0)
                 {
                     string receivedMessage = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-                    Console.WriteLine($"---> [{((IPEndPoint)client.Client.RemoteEndPoint).Port}] Alınan: {receivedMessage}");
+                    string responseMessage;
 
-                    // Aynı mesajı istemciye geri gönder (echo)
-                    byte[] echoBytes = Encoding.UTF8.GetBytes("Echo: " + receivedMessage);
-                    await stream.WriteAsync(echoBytes, 0, echoBytes.Length);
-                    Console.WriteLine($"---> [{((IPEndPoint)client.Client.RemoteEndPoint).Port}] Gönderilen: Echo: {receivedMessage}");
+                    lock (consoleLock)
+                    {
+                        Console.WriteLine($"\n---> [{clientIdentifier}] Alınan: {receivedMessage}");
+                        Console.Write($"---> [{clientIdentifier}] Yanıtınızı girin: ");
+                        responseMessage = Console.ReadLine() ?? ""; // Null ise boş string ata
+                        Console.WriteLine($"---> [{clientIdentifier}] Gönderiliyor: {responseMessage}"); // Ne gönderildiğini logla
+                    }
+
+                    byte[] responseBytes = Encoding.UTF8.GetBytes(responseMessage);
+                    await stream.WriteAsync(responseBytes, 0, responseBytes.Length);
                 }
             }
             catch (System.IO.IOException ioEx) when (ioEx.InnerException is SocketException)
